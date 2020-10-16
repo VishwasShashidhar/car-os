@@ -28,9 +28,12 @@ We make use of environment variables to configure variable data like `database p
 
 ## Running the App
 
-- From the project root, run the command `go run src/app.go`
+- From the project root, run the command `go run src/main.go`
+- This starts the web server on port 8080 by default
+- If you need to specify a custom port, do so by setting a value to the environment variable `APP_PORT`
+- There is a swagger UI alongside which you can access under [http://localhost:8080/swagger/index.html](http://localhost:8080/swagger/index.html)
 
 ## Running tests
 
 - From the project root, run the command `go test ./...`.
-- This will run all the tests from all the packages
+- This will run all the unit & e2e tests from all the packages

@@ -1,0 +1,30 @@
+basePath: /
+definitions:
+  controllers.Home:
+    properties:
+      message:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact:
+    email: vishwas@adwitiya.io
+    name: Vishwas Shashidhar
+    url: http://www.adwitiya.io/
+  description: This is a simple car management app
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Car OS
+  version: "1.0"
+paths:
+  /home:
+    get:
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/controllers.Home'
+      summary: Greets a user
+swagger: "2.0"

@@ -1,4 +1,4 @@
-name: Tests
+name: Unit Tests
 
 on: [push, pull_request]
 
@@ -6,7 +6,7 @@ jobs:
   test:
     strategy:
       matrix:
-        go-version: [1.14.x, 1.15.x]
+        go-version: [1.15.x]
         os: [ubuntu-latest]
     runs-on: ${{ matrix.os }}
     steps:
@@ -16,5 +16,16 @@ jobs:
           go-version: ${{ matrix.go-version }}
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Run Tests
+      - name: Run the app
+        env:
+          CI: true
+          APP_NAME: ${{ secrets.APP_NAME }}
+          APP_PORT: ${{ secrets.APP_PORT }}
+        run: |
+          cat <<EOT >> .env
+          APP_NAME=$APP_NAME
+          APP_PORT=$APP_PORT
+          EOT
+          go run src/main.go &
+      - name: Run Unit & E2E Tests
         run: go test ./...
