@@ -26,6 +26,6 @@ jobs:
           APP_NAME=$APP_NAME
           APP_PORT=$APP_PORT
           EOT
-          go run src/main.go
+          go run src/main.go &
       - name: Run Unit & E2E Tests
         run: go test ./...
