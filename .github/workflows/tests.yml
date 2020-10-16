@@ -18,5 +18,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Run the app
         run: go run src/main.go
+        env:
+          CI: true
+          APP_NAME: ${{ secrets.APP_NAME }}
+          APP_PORT: ${{ secrets.APP_PORT }}
       - name: Run Unit & E2E Tests
         run: go test ./...
