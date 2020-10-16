@@ -17,10 +17,15 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run the app
-        run: go run src/main.go
         env:
           CI: true
           APP_NAME: ${{ secrets.APP_NAME }}
           APP_PORT: ${{ secrets.APP_PORT }}
+        run: |
+          cat <<EOT >> .env
+          APP_NAME=$APP_NAME
+          APP_PORT=$APP_PORT
+          EOT
+          go run src/main.go
       - name: Run Unit & E2E Tests
         run: go test ./...
