@@ -16,7 +16,6 @@ func TestHomeGreetUser(t *testing.T) {
 
 	resp, _ := client.R().Get("http://localhost:8080/home")
 
-	assert.Equal(t, "application/json; charset=utf-8", resp.Header().Get("Content-Type"))
 	assert.Equal(t, 200, resp.StatusCode())
 
 	homeResponse := controllers.Home{}
