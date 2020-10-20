@@ -3,6 +3,11 @@ name: Unit Tests
 on: [push, pull_request]
 
 jobs:
+  services:
+    postgres:
+      image: postgres:11.5
+      ports: [ "5432:5432" ]
+      options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
   test:
     strategy:
       matrix:
@@ -14,6 +19,11 @@ jobs:
         uses: actions/setup-go@v2
         with:
           go-version: ${{ matrix.go-version }}
+
+      - name: Install PostgreSQL 11 client
+          run: |
+            sudo apt-get -yqq install libpq-dev
+
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Run the app
@@ -21,11 +31,17 @@ jobs:
           CI: true
           APP_NAME: ${{ secrets.APP_NAME }}
           APP_PORT: ${{ secrets.APP_PORT }}
+          DB_HOST: ${{ secrets.DB_HOST }}
+          DB_PORT: ${{ secrets.DB_PORT }}
+          DB_DATABASE: ${{ secrets.DB_DATABASE }}
+          DB_USER: ${{ secrets.DB_USER }}
+          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
         run: |
           cat <<EOT >> .env
           APP_NAME=$APP_NAME
           APP_PORT=$APP_PORT
           EOT
           go run src/main.go &
+
       - name: Run Unit & E2E Tests
         run: go test ./...
