@@ -21,6 +21,11 @@ func Init() {
 	defaultValueSet = make(map[string]string)
 	defaultValueSet["APP_NAME"] = "CarOS"
 	defaultValueSet["APP_PORT"] = "8080"
+	defaultValueSet["DB_HOST"] = "127.0.0.1"
+	defaultValueSet["DB_PORT"] = "5432"
+	defaultValueSet["DB_USER"] = "john"
+	defaultValueSet["DB_PASSWORD"] = "doe"
+	defaultValueSet["DB_DATABASE"] = "caros"
 }
 
 func getDefaultValueForKey(key string) string {

@@ -3,10 +3,11 @@ package e2e
 import (
 	"encoding/json"
 	"fmt"
+	"testing"
+
 	"github.com/VishwasShashidhar/car-os/src/controllers"
 	"github.com/go-playground/assert/v2"
 	"github.com/go-resty/resty/v2"
-	"testing"
 )
 
 func TestHomeGreetUser(t *testing.T) {

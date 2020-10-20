@@ -4,13 +4,13 @@ CarOS is a simple car management app built using Golang
 
 ## Purpose
 
-To demonstrate the workings of Golang with Iris web framework and ent ORM with PostgreSQL as the database
+To demonstrate the workings of Golang with Iris web framework and Gorm with PostgreSQL as the database
 
 ## Tech Stack
 
 - [Golang](https://golang.org)
 - [Iris Web Framework](https://www.iris-go.com)
-- [Ent ORM](https://entgo.io)
+- [Gorm](https://gorm.io)
 - [PostgreSQL](https://www.postgresql.org)
 
 ## Features

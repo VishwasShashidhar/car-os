@@ -15,6 +15,11 @@ func TestGetConfigurationForKey(t *testing.T) {
 
 		keyValueSet["APP_NAME"] = "Car OS Test"
 		keyValueSet["APP_PORT"] = "8090"
+		keyValueSet["DB_HOST"] = "127.0.0.1"
+		keyValueSet["DB_PORT"] = "5432"
+		keyValueSet["DB_USER"] = "postgres"
+		keyValueSet["DB_PASSWORD"] = "test"
+		keyValueSet["DB_DATABASE"] = "carostest"
 
 		for key, value := range keyValueSet {
 			os.Setenv(key, value)
@@ -28,6 +33,11 @@ func TestGetConfigurationForKey(t *testing.T) {
 
 		keyValueSet["APP_NAME"] = "CarOS"
 		keyValueSet["APP_PORT"] = "8080"
+		keyValueSet["DB_HOST"] = "127.0.0.1"
+		keyValueSet["DB_PORT"] = "5432"
+		keyValueSet["DB_USER"] = "john"
+		keyValueSet["DB_PASSWORD"] = "doe"
+		keyValueSet["DB_DATABASE"] = "caros"
 
 		for key, value := range keyValueSet {
 			os.Unsetenv(key)

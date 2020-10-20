@@ -30,12 +30,14 @@ func main() {
 	common.Init()
 	common.LoadConfiguration()
 
+	// Setup Gorm DB Configuration
+	common.ConnectDatabase()
+
+	// Setup IRIS & Swagger
 	app := iris.New()
 	app.Get("/swagger/*any", swagger.WrapHandler(swaggerFiles.Handler))
 	routes.SetupHomeRoutes(app)
-
 	port := common.GetConfigurationForKey("APP_PORT")
-
 	log.Printf("Open Swagger on http://localhost:%s/swagger/index.html", port)
 	app.Listen(fmt.Sprintf("localhost:%s", port))
 }
