@@ -3,10 +3,11 @@ package e2e
 import (
 	"encoding/json"
 	"fmt"
+	"testing"
+
 	"github.com/VishwasShashidhar/car-os/src/controllers"
 	"github.com/go-playground/assert/v2"
 	"github.com/go-resty/resty/v2"
-	"testing"
 )
 
 func TestHomeGreetUser(t *testing.T) {
@@ -15,7 +16,6 @@ func TestHomeGreetUser(t *testing.T) {
 
 	resp, _ := client.R().Get("http://localhost:8080/home")
 
-	assert.Equal(t, "application/json; charset=utf-8", resp.Header().Get("Content-Type"))
 	assert.Equal(t, 200, resp.StatusCode())
 
 	homeResponse := controllers.Home{}
